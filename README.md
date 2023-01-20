@@ -1,2 +1,1 @@
-# kholcomb86_SQL
-Collection of work with SQL
+Hired as a data analyst by Rockbuster Stealth’s business intelligence (BI) department, I helped with the launch strategy for the new online video service. I assisted other departments, from inventory to customer insights, with data-related queries. My task was to load all of Rockbuster's data into a relational database management system (RDBMS). Then, I used SQL to analyze the data and answer any ad-hoc business questions that other departments had. Here you will find my code and queries performed to achieve these goals.
