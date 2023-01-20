@@ -1,0 +1,32 @@
+WITH country_selector (first_name, last_name, city, country, sum) AS
+(SELECT A. first_name,
+A. last_name,
+C. city,
+D. country,
+SUM(amount)
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON b.city_id = c.city_id
+INNER JOIN country D ON c.country_id = d.country_id
+RIGHT JOIN payment E ON A.customer_id = E.customer_id
+WHERE city IN ('Acua', 'Citrus Heights', 'Iwaki', 'Ambattur', 'Shanwei', 'So Leopoldo', 'Teboksary', 
+'Tianjin', 'Cianjur')
+GROUP BY country, city, amount, last_name, first_name
+ORDER BY SUM(amount) DESC
+LIMIT 5)
+SELECT d.country,
+COUNT(DISTINCT customer_id) AS all_customer_count,
+COUNT(DISTINCT country_selector.country) AS top_customer_count
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON b.city_id = c.city_id
+INNER JOIN country D ON c.country_id = d.country_id
+LEFT JOIN country_selector ON D.country = country_selector.country
+GROUP BY D.country
+ORDER BY all_customer_count DESC
+LIMIT 5
+
+
+First, like in the first part, I opened with a WITH clause for the CTE. I then followed with the 
+inner query from part 2 in step 8 in parentheses. Next I took the outer query and left joined it 
+with the CTE.
